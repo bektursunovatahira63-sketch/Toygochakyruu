@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eef4ed">
+  <meta name="description" content="Ариель менен Жокинин үйлөнүү тоюна чакыруу">
+  <title>Ариель & Жоки — Үйлөнүү тоюна чакыруу</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--green:#58765e;--deep:#344d3b;--sage:#dfe9df;--cream:#fbfcf8;--gold:#b7a477;--ink:#35443a}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Manrope,Arial,sans-serif}
+    button,a{font:inherit}
+    .serif{font-family:"Cormorant Garamond",Georgia,serif}
+    .cover{position:fixed;inset:0;z-index:10;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#f8faf6,#e4eee3);transition:opacity .8s ease,visibility .8s ease}
+    .cover.hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .cover-card{text-align:center;max-width:520px;width:100%;padding:38px 24px;border:1px solid #b8c9b8;outline:1px solid #d7e1d5;outline-offset:7px;background:rgba(255,255,255,.72);box-shadow:0 18px 60px #405b4015}
+    .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:10px;color:var(--green)}
+    .cover h1{font-size:clamp(46px,10vw,76px);line-height:.95;font-weight:400;color:var(--green);margin:22px 0}
+    .cover p{font-size:13px;line-height:1.8;color:#6b7d6d}
+    .envelope{position:relative;width:150px;height:96px;margin:26px auto 24px;background:#dce8dc;border:1px solid #a8bba8;box-shadow:0 10px 22px #435b401c}
+    .envelope:before{content:"";position:absolute;inset:0;background:#edf3eb;clip-path:polygon(0 0,50% 58%,100% 0);border-bottom:1px solid #a8bba8}
+    .seal{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-15%);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:white;font-family:Georgia,serif}
+    .btn{border:0;border-radius:99px;padding:14px 23px;background:var(--green);color:#fff;text-decoration:none;display:inline-flex;justify-content:center;align-items:center;gap:8px;cursor:pointer;transition:.2s}
+    .btn:hover{background:var(--deep);transform:translateY(-2px)}
+    .btn.outline{background:transparent;color:var(--green);border:1px solid #91a992}
+    .music-control{position:fixed;right:18px;top:18px;z-index:5;border:1px solid #c9d6c8;background:#ffffffd9;color:var(--green);border-radius:50px;padding:10px 14px;cursor:pointer;font-size:12px}
+    .hero{min-height:94vh;display:grid;place-items:center;text-align:center;padding:90px 22px 70px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#fff 0,#f4f8f1 58%,#e5eee4 100%)}
+    .hero:before,.hero:after{content:"❧";position:absolute;color:#9db39b;font-size:clamp(100px,24vw,230px);opacity:.23;top:12%;left:-35px;transform:rotate(-28deg)}
+    .hero:after{left:auto;right:-35px;top:auto;bottom:5%;transform:rotate(150deg)}
+    .hero-inner{max-width:760px;position:relative;z-index:1}
+    .hero-photo{width:min(290px,72vw);aspect-ratio:4/5;object-fit:cover;border-radius:48% 48% 8px 8px;border:7px solid #fff;box-shadow:0 18px 50px #38533a1c;margin:28px auto 20px;display:block}
+    .hero h1{font-size:clamp(58px,12vw,104px);font-weight:400;line-height:.85;color:var(--green);margin:22px 0 14px}
+    .amp{font-style:italic;color:var(--gold);font-size:.7em}
+    .hero .subtitle{letter-spacing:.15em;text-transform:uppercase;font-size:11px;color:#728573}
+    .section{padding:82px 20px;text-align:center}
+    .section:nth-of-type(even){background:#f1f6ef}
+    .wrap{max-width:760px;margin:auto}
+    .section h2{font-size:clamp(38px,7vw,58px);font-weight:400;color:var(--green);margin:8px 0 18px}
+    .section p{font-size:14px;line-height:1.9;color:#68796b}
+    .ornament{color:var(--gold);font-size:24px;letter-spacing:8px}
+    .date{font-size:clamp(40px,9vw,70px);color:var(--green);margin:16px 0 6px}
+    .countdown{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:28px 0}
+    .count-box{min-width:75px;padding:14px 10px;border:1px solid #c8d7c6;background:#ffffffa8}
+    .count-box strong{display:block;font:40px "Cormorant Garamond",Georgia,serif;color:var(--green)}
+    .count-box span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#829182}
+    .details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:30px 0}
+    .detail{padding:24px 16px;background:#fff;border:1px solid #e0e9de}
+    .detail .symbol{font-size:24px;color:var(--gold)}
+    .detail h3{font:26px "Cormorant Garamond",Georgia,serif;color:var(--green);margin:10px 0 4px}
+    .detail p{margin:0;font-size:12px}
+    .rsvp{background:linear-gradient(135deg,#e7efe5,#f8faf6)}
+    .rsvp-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px}
+    footer{padding:50px 20px;text-align:center;background:#e5eee4;color:var(--green)}
+    footer .names{font:italic 44px "Cormorant Garamond",Georgia,serif}
+    @media(max-width:520px){.section{padding:65px 18px}.details{grid-template-columns:1fr}.music-control{top:10px;right:10px}.cover-card{padding:30px 18px}}
+  </style>
+</head>
+<body>
+  <audio id="weddingMusic" src="assets/wedding-song.mp3" preload="none" loop></audio>
+
+  <div class="cover" id="cover">
+    <div class="cover-card">
+      <div class="eyebrow">Сиздерге өзгөчө чакыруу</div>
+      <div class="envelope" aria-hidden="true"><div class="seal">A♡J</div></div>
+      <h1 class="serif">Ариель <span class="amp">&</span> Жоки</h1>
+      <p>Биздин кубанычтуу күнүбүзгө күбө болууга чакырабыз.</p>
+      <button class="btn" id="openInvitation">Чакырууну ачуу ♡</button>
+    </div>
+  </div>
+
+  <button class="music-control" id="musicToggle" type="button" aria-label="Музыканы күйгүзүү же өчүрүү">♫ Музыка</button>
+
+  <main>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Үйлөнүү тоюна чакыруу</div>
+        <!-- Өз сүрөтүңөрдү assets/couple.jpg деген ат менен кошсоңор, төмөнкү сүрөт автоматтык колдонулат -->
+        <img class="hero-photo" src="assets/photo-placeholder.svg" alt="Ариель жана Жоки үчүн сүрөт орду">
+        <div class="ornament">❧ ❦ ❧</div>
+        <h1 class="serif">Ариель <span class="amp">&</span> Жоки</h1>
+        <p class="subtitle">Эки жүрөк — бир тагдыр</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="eyebrow">Урматтуу коноктор!</div>
+        <h2 class="serif">Сиздерди күтөбүз</h2>
+        <div class="ornament">✧</div>
+        <p>Сиздерди жашообуздагы эң бактылуу жана өзгөчө күнгө арналган үйлөнүү тоюбуздун урматтуу коногу болууга чакырабыз. Бул кубанычтуу күнү биз менен бирге болуңуздар!</p>
+        <p class="serif" style="font-size:25px;color:#58765e;font-style:italic">Сүйүү менен, Ариель жана Жоки</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="eyebrow">Бул күндү белгилеп коюңуз</div>
+        <h2 class="serif">Той күнү</h2>
+        <div class="date serif">26 · 11 · 2026</div>
+        <p>Бейшемби күнү · Саат 17:00</p>
+        <div class="countdown" aria-label="Тойго чейинки убакыт">
+          <div class="count-box"><strong id="days">—</strong><span>Күн</span></div>
+          <div class="count-box"><strong id="hours">—</strong><span>Саат</span></div>
+          <div class="count-box"><strong id="minutes">—</strong><span>Мүнөт</span></div>
+          <div class="count-box"><strong id="seconds">—</strong><span>Секунд</span></div>
+        </div>
+        <p id="countdownMessage"></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="eyebrow">Кайда жана качан?</div>
+        <h2 class="serif">Тойдун дареги</h2>
+        <div class="details">
+          <div class="detail"><div class="symbol">♡</div><h3>Кенч рестораны</h3><p>Кочкор району</p></div>
+          <div class="detail"><div class="symbol">⌚</div><h3>17:00</h3><p>26-ноябрь, 2026-жыл</p></div>
+        </div>
+        <a class="btn outline" href="https://www.google.com/maps/search/?api=1&query=%D0%9A%D0%B5%D0%BD%D1%87+%D1%80%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%8B%2C+%D0%9A%D0%BE%D1%87%D0%BA%D0%BE%D1%80+%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83" target="_blank" rel="noopener">Картадан көрүү ↗</a>
+      </div>
+    </section>
+
+    <section class="section rsvp">
+      <div class="wrap">
+        <div class="eyebrow">Сураныч, катышууңузду ырастаңыз</div>
+        <h2 class="serif">Сизди күтөбүз!</h2>
+        <p>Төмөнкү баскычтардын бирин тандап, WhatsApp аркылуу жооп жөнөтүңүз.</p>
+        <div class="rsvp-buttons">
+          <a class="btn" id="yesBtn" target="_blank" rel="noopener">Катышам ♡</a>
+          <a class="btn outline" id="noBtn" target="_blank" rel="noopener">Келе албайм</a>
+        </div>
+        <p style="font-size:11px;margin-top:20px">Той ээси: Бектурсун Гүлжанат</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">❧ ❦ ❧</div>
+    <div class="names">Ариель & Жоки</div>
+    <p>Сүйүү, бакыт жана бирге башталган жаңы баракча.</p>
+    <div class="eyebrow">26 · 11 · 2026</div>
+  </footer>
+
+  <script>
+    const cover = document.getElementById('cover');
+    const audio = document.getElementById('weddingMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    let musicStarted = false;
+
+    async function startMusic() {
+      try {
+        await audio.play();
+        musicStarted = true;
+        musicToggle.textContent = '♫ Музыка: күйүп турат';
+      } catch (e) {
+        musicToggle.textContent = '♫ Музыканы ойнотуу';
+      }
+    }
+
+    document.getElementById('openInvitation').addEventListener('click', async () => {
+      cover.classList.add('hidden');
+      await startMusic();
+    });
+
+    musicToggle.addEventListener('click', async () => {
+      if (audio.paused) await startMusic();
+      else {
+        audio.pause();
+        musicToggle.textContent = '♫ Музыка';
+      }
+    });
+
+    // WhatsApp номерин эл аралык форматта жазабыз: өлкө коду менен, "+" белгисиз.
+    const whatsappNumber = '996707298547';
+    const eventDate = '26-ноябрь, 2026';
+    const yesText = `Саламатсызбы! Мен Ариель менен Жокинин ${eventDate}-дагы тоюна катышам.`;
+    const noText = `Саламатсызбы! Тилекке каршы, Ариель менен Жокинин тоюна катыша албайм.`;
+    document.getElementById('yesBtn').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(yesText)}`;
+    document.getElementById('noBtn').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(noText)}`;
+
+    // Той убактысы: Кыргызстан убактысы (UTC+6).
+    const target = new Date('2026-11-26T17:00:00+06:00').getTime();
+    const fields = {
+      days: document.getElementById('days'),
+      hours: document.getElementById('hours'),
+      minutes: document.getElementById('minutes'),
+      seconds: document.getElementById('seconds')
+    };
+    function updateCountdown() {
+      const distance = target - Date.now();
+      if (distance <= 0) {
+        Object.values(fields).forEach(el => el.textContent = '0');
+        document.getElementById('countdownMessage').textContent = 'Бул өзгөчө күн келди! Майрамыңыздар кут болсун!';
+        return;
+      }
+      fields.days.textContent = Math.floor(distance / 86400000);
+      fields.hours.textContent = Math.floor((distance % 86400000) / 3600000);
+      fields.minutes.textContent = Math.floor((distance % 3600000) / 60000);
+      fields.seconds.textContent = Math.floor((distance % 60000) / 1000);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+  </html>
+                                                    
